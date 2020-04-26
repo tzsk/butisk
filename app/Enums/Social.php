@@ -2,13 +2,10 @@
 
 namespace App\Enums;
 
-class Social
+use BenSampo\Enum\Enum;
+
+final class Social extends Enum
 {
     const GOOGLE = 'google';
     const FACEBOOK = 'facebook';
-
-    public static function providers(): array
-    {
-        return [self::GOOGLE, self::FACEBOOK];
-    }
 }

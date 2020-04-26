@@ -20,7 +20,7 @@ Then add your environment keys in `.env` file.
 
 3. **Bootstrap Application**
 ```shell script
-php artisan migrate:refresh --seed
+php artisan migrate:fresh --seed
 ```
 
 4. **Start Application**

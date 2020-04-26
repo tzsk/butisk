@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\AuthGuards;
+use App\Enums\PasswordBrokers;
 use Laravel\Nova\Actions\ActionResource;
 use Laravel\Nova\Http\Middleware\Authenticate;
 use Laravel\Nova\Http\Middleware\Authorize;
@@ -71,7 +73,7 @@ return [
     |
     */
 
-    'guard' => env('NOVA_GUARD', null),
+    'guard' => env('NOVA_GUARD', AuthGuards::EMPLOYEE),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +86,7 @@ return [
     |
     */
 
-    'passwords' => env('NOVA_PASSWORDS', null),
+    'passwords' => env('NOVA_PASSWORDS', PasswordBrokers::EMPLOYEES),
 
     /*
     |--------------------------------------------------------------------------
