@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->enum('provider', [Social::getValues()])->nullable();
-            $table->string('provider_id')->index();
+            $table->string('provider_id')->nullable()->index();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
