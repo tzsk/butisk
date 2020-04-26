@@ -1,8 +1,5 @@
 name: Format PHP (php-cs)
 on:
-  pull_request:
-    paths:
-      - '**.php'
   push:
     paths:
       - '**.php'
