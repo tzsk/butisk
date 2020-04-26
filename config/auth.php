@@ -1,5 +1,8 @@
 <?php
 
+use App\Enums\AuthGuards;
+use App\Enums\PasswordBrokers;
+
 return [
 
     /*
@@ -14,8 +17,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => AuthGuards::USER,
+        'passwords' => PasswordBrokers::USERS,
     ],
 
     /*
@@ -36,9 +39,14 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        AuthGuards::USER => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => PasswordBrokers::USERS,
+        ],
+
+        AuthGuards::EMPLOYEE => [
+            'driver' => 'session',
+            'provider' => PasswordBrokers::EMPLOYEES,
         ],
 
         'api' => [
@@ -66,9 +74,13 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        PasswordBrokers::USERS => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        PasswordBrokers::EMPLOYEES => [
+            'driver' => 'eloquent',
+            'model' => App\Employee::class,
         ],
 
         // 'users' => [
@@ -93,8 +105,14 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        PasswordBrokers::USERS => [
+            'provider' => PasswordBrokers::USERS,
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        PasswordBrokers::EMPLOYEES => [
+            'provider' => PasswordBrokers::EMPLOYEES,
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
