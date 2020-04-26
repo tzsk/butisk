@@ -28,4 +28,9 @@ php artisan migrate:refresh --seed
 php artisan serve
 ```
 
+5. **PHP Linting**
+```shell script
+composer lint
+```
+
 Now start development
