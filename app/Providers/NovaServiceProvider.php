@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Contracts\HasNovaAccess;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
@@ -41,10 +42,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
-//            return $user instanceof Employee;
-            return in_array($user->email, [
-                'mailtokmahmed@gmail.com'
-            ]);
+            return $user instanceof HasNovaAccess;
         });
     }
 
