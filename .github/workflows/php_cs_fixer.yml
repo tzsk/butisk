@@ -1,4 +1,5 @@
 name: Format PHP (php-cs)
+
 on:
   push:
     paths:
