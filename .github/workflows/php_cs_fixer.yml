@@ -9,25 +9,9 @@ jobs:
     name: Format PHP (php-cs)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-      - name: Cache composer dependencies
-        uses: actions/cache@v1
+      - name: PHP-CS-Fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
         with:
-          path: vendor
-          key: composer-${{ hashFiles('composer.lock') }}
-
-      - name: Install Composer Packages
-        run: |
-          composer config "http-basic.nova.laravel.com" "${{ secrets.NOVA_USERNAME }}" "${{ secrets.NOVA_PASSWORD }}"
-          composer install -n --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-
-      - name: Run php-cs-fixer
-        run: composer lint
-
-      - uses: stefanzweifel/git-auto-commit-action@v2.1.0
-        with:
-          commit_message: Apply php-cs-fixer changes
-          branch: ${{ github.head_ref }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          args: --config=.php_cs --diff --dry-run
