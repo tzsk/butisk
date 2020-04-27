@@ -1,9 +1,6 @@
 name: Unit Test (PHP)
 
-on:
-  push:
-    paths:
-      - '**.php'
+on: push
 
 jobs:
   phpunit:

@@ -1,9 +1,6 @@
 name: Format PHP (php-cs)
 
-on:
-  push:
-    paths:
-      - '**.php'
+on: [push, pull_request]
 
 jobs:
   php-cs-fixer:
@@ -16,3 +13,8 @@ jobs:
         uses: docker://oskarstark/php-cs-fixer-ga
         with:
           args: --config=.php_cs --diff --dry-run
+
+      - uses: stefanzweifel/git-auto-commit-action@v4.1.5
+        with:
+            commit_message: Apply php-cs-fixer changes
+            branch: ${{ github.head_ref }}
