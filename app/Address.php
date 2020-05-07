@@ -16,7 +16,7 @@ use Locale;
  * @property string zip_code
  * @property string country_code
  * @property string country_name
- * @property boolean primary
+ * @property bool primary
  */
 class Address extends Model
 {
