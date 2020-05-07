@@ -2,12 +2,13 @@
 
 namespace App;
 
-use App\Enums\Countries;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Locale;
 
 /**
  * @property Collection user
+ * @property string nickname
  * @property string address_line_1
  * @property string address_line_2
  * @property string city
@@ -15,15 +16,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property string zip_code
  * @property string country_code
  * @property string country_name
+ * @property bool primary
  */
 class Address extends Model
 {
     protected $fillable = [
-        'address_line_1', 'address_line_2', 'city', 'state', 'zip_code', 'country_code',
+        'nickname', 'address_line_1', 'address_line_2', 'city', 'state', 'zip_code', 'country_code', 'primary',
     ];
 
     public function getCountryNameAttribute()
     {
-        return Countries::getValue($this->country_code);
+        return Locale::getDisplayRegion(sprintf('-%s', $this->country_code));
     }
 }

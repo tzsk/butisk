@@ -7,7 +7,8 @@ class NovaUserSeeder extends Seeder
 {
     public function run()
     {
-        $admin = Employee::query()->where('email', 'admin@butisk.com')->firstOrNew();
+        $email = 'admin@butisk.com';
+        $admin = Employee::query()->firstOrNew(compact('email'));
 
         $admin->forceFill([
             'name' => 'Admin',

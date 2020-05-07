@@ -17,12 +17,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('calling_code', 10);
-            $table->string('mobile', 20)->unique();
-            $table->string('country_code', 10);
+            $table->string('mobile_number', 20);
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('mobile_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->unique(['calling_code', 'mobile_number']);
         });
     }
 }
