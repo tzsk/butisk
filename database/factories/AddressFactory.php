@@ -10,6 +10,7 @@ $factory->define(Address::class, function (Faker $faker) {
         'user_id' => function () {
             return factory(\App\User::class)->create()->id;
         },
+        'nickname' => $faker->jobTitle,
         'address_line_1' => $faker->streetAddress,
         'address_line_2' => $faker->secondaryAddress,
         'city' => $faker->city,
@@ -18,3 +19,5 @@ $factory->define(Address::class, function (Faker $faker) {
         'country_code' => $faker->countryCode,
     ];
 });
+
+$factory->state(Address::class, 'primary', ['primary' => true]);

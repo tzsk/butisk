@@ -13,14 +13,16 @@ class CreateAddressesTable extends Migration
             $table->foreignId('user_id')
                 ->nullable()
                 ->references('id')
-                ->on('users')
+                ->on((new \App\User())->getTable())
                 ->cascadeOnDelete();
+            $table->string('nickname', 100);
             $table->string('address_line_1');
             $table->string('address_line_2');
             $table->string('city', 100);
             $table->string('state', 100);
             $table->string('zip_code', 10);
             $table->string('country_code', 10);
+            $table->boolean('primary')->default(false);
             $table->timestamps();
         });
     }
