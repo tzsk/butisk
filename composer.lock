@@ -420,33 +420,32 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.10.4",
+            "version": "2.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "47433196b6390d14409a33885ee42b6208160643"
+                "reference": "fb5d5f2f26babf8dce217b1eb88300c22bb703a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/47433196b6390d14409a33885ee42b6208160643",
-                "reference": "47433196b6390d14409a33885ee42b6208160643",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fb5d5f2f26babf8dce217b1eb88300c22bb703a4",
+                "reference": "fb5d5f2f26babf8dce217b1eb88300c22bb703a4",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.0",
                 "doctrine/event-manager": "^1.0",
                 "ext-pdo": "*",
-                "php": "^7.2"
+                "php": "^7.3"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^8.1",
                 "jetbrains/phpstorm-stubs": "^2019.1",
-                "nikic/php-parser": "^4.4",
                 "phpstan/phpstan": "^0.12.40",
-                "phpunit/phpunit": "^8.5.5",
+                "phpunit/phpunit": "^9.4",
                 "psalm/plugin-phpunit": "^0.10.0",
                 "symfony/console": "^2.0.5|^3.0|^4.0|^5.0",
-                "vimeo/psalm": "^3.14.2"
+                "vimeo/psalm": "^3.17.2"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
@@ -457,8 +456,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.10.x-dev",
-                    "dev-develop": "3.0.x-dev"
+                    "dev-master": "4.0.x-dev"
                 }
             },
             "autoload": {
@@ -525,7 +523,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-12T21:20:41+00:00"
+            "time": "2020-10-20T14:36:48+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -1637,17 +1635,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "v3.10.0",
+            "version": "v3.13.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "5ccdcc817b190505d21cd4ca1a75cf1ca113238f"
+                "reference": "b0a13f6c988b504275bbc82367f853bc78257256"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-5ccdcc817b190505d21cd4ca1a75cf1ca113238f-zip-179efb.zip",
-                "reference": "5ccdcc817b190505d21cd4ca1a75cf1ca113238f",
-                "shasum": "4eb7f94a130999d70ca04fae4d89bcabbc4e2b18"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-b0a13f6c988b504275bbc82367f853bc78257256-zip-5aa88d.zip",
+                "reference": "b0a13f6c988b504275bbc82367f853bc78257256",
+                "shasum": "984f76ccf7b966250da9747f46db9dd2ab3fffe5"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -1665,8 +1663,9 @@
             },
             "require-dev": {
                 "laravel/legacy-factories": "^1.0",
+                "laravel/nova-dusk-suite": "dev-master",
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^6.0",
+                "orchestra/testbench-dusk": "^6.1",
                 "phpunit/phpunit": "^8.4",
                 "predis/predis": "^1.1"
             },
@@ -1694,6 +1693,16 @@
                     "Laravel\\Nova\\Tests\\": "tests/"
                 }
             },
+            "scripts": {
+                "dusk:prepare": [
+                    "./vendor/bin/dusk-updater detect --auto-update",
+                    "@php -r \"file_exists('phpunit.dusk.xml') || copy('phpunit.dusk.xml.dist', 'phpunit.dusk.xml'); \"",
+                    "@php -r \"if (file_exists('.env.dusk')) { copy('.env.dusk', 'vendor/laravel/nova-dusk-suite/.env'); } else { copy('.env.dusk.example', 'vendor/laravel/nova-dusk-suite/.env'); }\""
+                ],
+                "dusk:test": [
+                    "./vendor/bin/phpunit -c phpunit.dusk.xml"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1708,7 +1717,7 @@
                 "admin",
                 "laravel"
             ],
-            "time": "2020-09-15T15:34:07+00:00"
+            "time": "2020-10-20T16:54:09+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -1841,16 +1850,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "f5398544a9cd4804a42d09ce51735e37cd51ea2d"
+                "reference": "1c69ae3e8b52fe6c9eaf83b43c6dd8ef5c3f9e2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/f5398544a9cd4804a42d09ce51735e37cd51ea2d",
-                "reference": "f5398544a9cd4804a42d09ce51735e37cd51ea2d",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/1c69ae3e8b52fe6c9eaf83b43c6dd8ef5c3f9e2c",
+                "reference": "1c69ae3e8b52fe6c9eaf83b43c6dd8ef5c3f9e2c",
                 "shasum": ""
             },
             "require": {
@@ -1892,7 +1901,7 @@
                 "laravel",
                 "ui"
             ],
-            "time": "2020-09-11T15:31:52+00:00"
+            "time": "2020-09-22T16:51:51+00:00"
         },
         {
             "name": "league/commonmark",
@@ -4277,16 +4286,16 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v5.1.5",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
-                "reference": "b6886c43cc1ae3367c569c5a8d4182555dd694fb"
+                "reference": "9381fd69ce6407041185aa6f1bafbf7d65f0e66a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/b6886c43cc1ae3367c569c5a8d4182555dd694fb",
-                "reference": "b6886c43cc1ae3367c569c5a8d4182555dd694fb",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/9381fd69ce6407041185aa6f1bafbf7d65f0e66a",
+                "reference": "9381fd69ce6407041185aa6f1bafbf7d65f0e66a",
                 "shasum": ""
             },
             "require": {
@@ -4363,7 +4372,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-17T07:42:30+00:00"
+            "time": "2020-09-27T03:44:28+00:00"
         },
         {
             "name": "symfony/mime",
